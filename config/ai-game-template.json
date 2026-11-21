@@ -1,0 +1,702 @@
+{
+  "tipo": "jogo",
+  "repo": "ai-game-template",
+  "descricao": "jogos feitos com vibe coding (jam, protótipo ou lançamento)",
+  "niveis": {
+    "SIMPLES": {
+      "adiciona": [
+        "SOURCE/contexto-master.md",
+        "SOURCE/00-conceito/game-concept.md",
+        "SOURCE/01-design/core-loop.md",
+        "SOURCE/01-design/mecanicas.md",
+        "SOURCE/03-tecnico/engine-e-stack.md",
+        "SOURCE/03-tecnico/arquitetura-de-codigo.md",
+        "SOURCE/03-tecnico/mapa-cenas-nodos.md",
+        "SOURCE/03-tecnico/contrato-de-eventos.md",
+        "SOURCE/04-dados-de-design/entidades.json",
+        "SOURCE/05-agentes/guardrails.md",
+        "SOURCE/05-agentes/skills/prototipar-greybox.md",
+        "SOURCE/05-agentes/skills/juice-e-feel.md",
+        "SOURCE/05-agentes/skills/corrigir-bug.md",
+        "SOURCE/05-agentes/skills/revisar-entrega.md",
+        "SOURCE/06-qualidade/definicao-de-pronto.md"
+      ],
+      "opcionais": []
+    },
+    "MEDIO": {
+      "adiciona": [
+        "SOURCE/00-conceito/pilares-e-experiencia.md",
+        "SOURCE/01-design/progressao-e-economia.md",
+        "SOURCE/01-design/niveis-e-mundo.md",
+        "SOURCE/01-design/controles-e-ux.md",
+        "SOURCE/02-direcao-arte-audio/art-bible.md",
+        "SOURCE/02-direcao-arte-audio/convencoes-de-assets.md",
+        "SOURCE/03-tecnico/performance-e-plataformas.md",
+        "SOURCE/03-tecnico/pipeline-de-build.md",
+        "SOURCE/04-dados-de-design/README.md",
+        "SOURCE/04-dados-de-design/habilidades.csv",
+        "SOURCE/04-dados-de-design/inimigos.csv",
+        "SOURCE/05-agentes/skills/projetar-mecanica.md",
+        "SOURCE/05-agentes/skills/implementar-feature.md",
+        "SOURCE/06-qualidade/playtest-e-balanceamento.md",
+        "SOURCE/06-qualidade/checklist-revisao.md",
+        "SOURCE/07-producao/escopo-mvp.md",
+        "SOURCE/09-decisoes/ADR-000-modelo.md"
+      ],
+      "opcionais": [
+        "SOURCE/00-conceito/publico-e-mercado.md",
+        "SOURCE/01-design/narrativa-e-personagens.md",
+        "SOURCE/02-direcao-arte-audio/direcao-de-audio.md",
+        "SOURCE/02-direcao-arte-audio/ui-style-guide.md",
+        "SOURCE/03-tecnico/multiplayer-e-rede.md",
+        "SOURCE/05-agentes/papeis-e-fluxo.md",
+        "SOURCE/05-agentes/skills/criar-conteudo-narrativo.md",
+        "SOURCE/05-agentes/skills/gerar-asset-brief.md"
+      ]
+    },
+    "COMPLEXO": {
+      "adiciona": [
+        "SOURCE/07-producao/roadmap-e-marcos.md",
+        "SOURCE/08-referencias/jogos-referencia.md",
+        "SOURCE/08-referencias/templates/template-gdd-feature.md",
+        "SOURCE/08-referencias/templates/template-asset-brief.md"
+      ],
+      "opcionais": [
+        "SOURCE/00-conceito/publico-e-mercado.md",
+        "SOURCE/01-design/narrativa-e-personagens.md",
+        "SOURCE/02-direcao-arte-audio/direcao-de-audio.md",
+        "SOURCE/02-direcao-arte-audio/ui-style-guide.md",
+        "SOURCE/03-tecnico/multiplayer-e-rede.md",
+        "SOURCE/05-agentes/papeis-e-fluxo.md",
+        "SOURCE/05-agentes/skills/criar-conteudo-narrativo.md",
+        "SOURCE/05-agentes/skills/gerar-asset-brief.md",
+        "SOURCE/08-referencias/exemplos-de-saida/exemplo-gdd-feature.md",
+        "SOURCE/09-decisoes/ADR-001-exemplo.md"
+      ]
+    }
+  },
+  "pontuacao": {
+    "perguntas": [
+      {
+        "tema": "Duração e escopo",
+        "opcoes": [
+          "Jam ou protótipo, até 2 semanas",
+          "Jogo curto, 1 a 3 meses",
+          "Mais de 3 meses ou conteúdo extenso"
+        ]
+      },
+      {
+        "tema": "Sistemas e conteúdo",
+        "opcoes": [
+          "1 mecânica central e poucas fases",
+          "Vários sistemas (economia, loot, progressão)",
+          "Muitos sistemas, meta-progressão ou conteúdo procedural grande"
+        ]
+      },
+      {
+        "tema": "Online",
+        "opcoes": [
+          "Nenhum",
+          "Ranking ou leaderboard simples",
+          "Co-op, multiplayer ou servidor próprio"
+        ]
+      },
+      {
+        "tema": "Publicação e monetização",
+        "opcoes": [
+          "Grátis (ex.: itch.io)",
+          "Premium em loja (Steam, mobile)",
+          "Free-to-play, compras no app ou várias plataformas"
+        ]
+      },
+      {
+        "tema": "Equipe",
+        "opcoes": [
+          "1 pessoa + IA",
+          "2 a 3 pessoas",
+          "4 ou mais, ou papéis separados (arte, áudio, design)"
+        ]
+      }
+    ],
+    "faixas": {
+      "SIMPLES": [
+        0,
+        3
+      ],
+      "MEDIO": [
+        4,
+        7
+      ],
+      "COMPLEXO": [
+        8,
+        10
+      ]
+    },
+    "tres_respostas_2": 3,
+    "pisos": [
+      {
+        "pergunta": 3,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "multiplayer ou servidor próprio"
+      },
+      {
+        "pergunta": 4,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "free-to-play, compras no app ou várias plataformas"
+      }
+    ]
+  },
+  "prefixos": {
+    "game": "jogo",
+    "jam": "game jam ou protótipo"
+  },
+  "exemplos": {
+    "SIMPLES": "Game jam, protótipo, mini-jogo de 1 mecânica",
+    "MEDIO": "Jogo curto com economia, fases e lançamento em loja",
+    "COMPLEXO": "Jogo online, free-to-play, conteúdo extenso, time com papéis"
+  },
+  "exemplos_nome": "`game-farol-perdido`, `jam-luz-e-sombra`",
+  "sinais": [
+    "O jogo ganhou meta-progressão, economia ou várias fases",
+    "Entrou multiplayer, ranking ou monetização",
+    "Entrou mais gente (arte, áudio, design separados)",
+    "Os playtests mostram desbalanceamento recorrente: falta `playtest-e-balanceamento` e os dados completos"
+  ],
+  "pastas": [
+    [
+      "00-conceito",
+      "game-concept.md e pilares-e-experiencia.md",
+      "gênero, plataforma, pitch, fantasia do jogador; até 3 pilares e anti-pilares"
+    ],
+    [
+      "01-design",
+      "core-loop.md, mecanicas.md, progressao-e-economia.md, niveis-e-mundo.md e controles-e-ux.md",
+      "loops; mecânicas com regras SEM números; curva de dificuldade; fases; controles e HUD"
+    ],
+    [
+      "02-direcao-arte-audio",
+      "art-bible.md e convencoes-de-assets.md",
+      "3 palavras de direção visual; paleta HEX; padrão de nomes e formatos de assets"
+    ],
+    [
+      "03-tecnico",
+      "engine-e-stack.md, arquitetura-de-codigo.md, mapa-cenas-nodos.md, contrato-de-eventos.md, performance-e-plataformas.md e pipeline-de-build.md",
+      "engine e versão; estrutura de pastas; árvore de cenas; tabela de eventos; metas de FPS; versionamento e LFS"
+    ],
+    [
+      "04-dados-de-design",
+      "README.md, entidades.json, habilidades.csv e inimigos.csv",
+      "entidades e atributos; habilidades e parâmetros usados nas fórmulas; ids únicos"
+    ],
+    [
+      "05-agentes",
+      "guardrails.md e skills projetar-mecanica, implementar-feature, prototipar-greybox, juice-e-feel, corrigir-bug, revisar-entrega",
+      "ações proibidas e com aprovação; receita curta de cada skill"
+    ],
+    [
+      "06-qualidade",
+      "definicao-de-pronto.md, playtest-e-balanceamento.md e checklist-revisao.md",
+      "critérios de pronto; plano do primeiro playtest e métricas; itens de revisão"
+    ],
+    [
+      "07-producao",
+      "escopo-mvp.md",
+      "objetivo do marco; dentro/fora; critérios de sucesso; ordem de corte"
+    ]
+  ],
+  "unico_dados": "nome, gênero, plataforma e pitch [[conceito]]; loop de 30 segundos [[loop]]; mecânicas com regras SEM números [[mecânicas]]; engine e versão [[engine]]; cenas principais [[cenas]]; eventos [[eventos]]; entidades e valores iniciais (só em entidades.json) [[entidades]]; ações proibidas [[guardrails]]; critérios de pronto [[pronto]]",
+  "gate_extra": "dados de design com valores iniciais, escopo do primeiro marco definido e engine escolhida",
+  "prompts": [
+    [
+      "SOURCE/contexto-master.md",
+      [
+        "nome do jogo",
+        "o jogo em 3-5 linhas",
+        "até 3 pilares",
+        "fase atual, engine e plataformas",
+        "regras inegociáveis",
+        "módulos mantidos"
+      ],
+      "Preencha todas as seções, monte o mapa 'leia quando' só com arquivos que existem e mantenha até 2 páginas. Reexecute ao final do planejamento."
+    ],
+    [
+      "SOURCE/00-conceito/game-concept.md",
+      [
+        "gênero",
+        "plataformas",
+        "perspectiva",
+        "modo (solo/co-op/online)",
+        "duração de sessão",
+        "pitch em 1 frase",
+        "fantasia do jogador",
+        "diferencial",
+        "3 jogos de referência"
+      ],
+      "Escreva o one-pager; em referências, diga o que pegar e o que evitar."
+    ],
+    [
+      "SOURCE/00-conceito/pilares-e-experiencia.md",
+      [
+        "até 3 pilares",
+        "emoções-alvo",
+        "anti-pilares (o que o jogo não é)",
+        "tom"
+      ],
+      "Para cada pilar, inclua a pergunta de validação 'isso serve ao pilar?'."
+    ],
+    [
+      "SOURCE/00-conceito/publico-e-mercado.md",
+      [
+        "público-alvo",
+        "concorrentes diretos",
+        "modelo de negócio e preço",
+        "classificação indicativa alvo"
+      ],
+      "Seja objetivo; marque 'a confirmar' o que for estimativa."
+    ],
+    [
+      "SOURCE/01-design/core-loop.md",
+      [
+        "ação principal do jogador",
+        "loop de 30 segundos",
+        "loop de sessão",
+        "meta-progressão",
+        "fontes de diversão",
+        "riscos conhecidos"
+      ],
+      "Inclua um fluxograma Mermaid do loop."
+    ],
+    [
+      "SOURCE/01-design/mecanicas.md",
+      [
+        "lista de mecânicas",
+        "entrada do jogador de cada uma",
+        "regras passo a passo",
+        "feedback visual e sonoro",
+        "casos de borda",
+        "pilar atendido"
+      ],
+      "Use fichas MEC-xx; escreva fórmulas com NOMES de parâmetros e NUNCA números (os valores vão em 04-dados-de-design)."
+    ],
+    [
+      "SOURCE/01-design/progressao-e-economia.md",
+      [
+        "curva de dificuldade desejada",
+        "taxa de vitória alvo por fase",
+        "recursos, fontes e ralos",
+        "progressão in-run e meta",
+        "regras de loot"
+      ],
+      "Descreva intenção e regras; não coloque valores numéricos fechados."
+    ],
+    [
+      "SOURCE/01-design/niveis-e-mundo.md",
+      [
+        "estrutura do mundo",
+        "biomas/fases",
+        "objetivo de cada fase",
+        "mecânica ensinada em cada fase",
+        "regras de geração procedural",
+        "ritmo de tensão"
+      ],
+      "Use a tabela-modelo de nível e o checklist de nível."
+    ],
+    [
+      "SOURCE/01-design/narrativa-e-personagens.md",
+      [
+        "premissa em 3 linhas",
+        "personagens com voz e arco",
+        "regras do mundo",
+        "tom e limites de escrita",
+        "ferramenta/formato de diálogo",
+        "conteúdo sensível"
+      ],
+      "Mantenha coerência com os pilares."
+    ],
+    [
+      "SOURCE/01-design/controles-e-ux.md",
+      [
+        "ações do jogador",
+        "mapeamento por dispositivo",
+        "elementos do HUD",
+        "fluxo de menus",
+        "requisitos de acessibilidade"
+      ],
+      "Inclua o fluxo de menus em Mermaid."
+    ],
+    [
+      "SOURCE/02-direcao-arte-audio/art-bible.md",
+      [
+        "3 palavras de direção visual",
+        "paleta em HEX",
+        "resolução e tamanho de tile",
+        "regras de personagem/inimigo",
+        "referências visuais permitidas",
+        "o que evitar"
+      ],
+      "Não cite personagens ou obras protegidas como modelo."
+    ],
+    [
+      "SOURCE/02-direcao-arte-audio/direcao-de-audio.md",
+      [
+        "identidade sonora",
+        "música por contexto",
+        "regras de SFX",
+        "níveis de mixagem",
+        "formatos"
+      ],
+      "Use tabelas por contexto."
+    ],
+    [
+      "SOURCE/02-direcao-arte-audio/ui-style-guide.md",
+      [
+        "fontes e tamanhos",
+        "estados de botão",
+        "estilo de ícones",
+        "grid de margens",
+        "animações de UI",
+        "contraste mínimo"
+      ],
+      "Dê um valor concreto por regra."
+    ],
+    [
+      "SOURCE/02-direcao-arte-audio/convencoes-de-assets.md",
+      [
+        "padrão de nome",
+        "prefixos por tipo",
+        "formatos e limites",
+        "estrutura de pastas na engine"
+      ],
+      "Mantenha a regra do manifesto de assets (origem e licença)."
+    ],
+    [
+      "SOURCE/03-tecnico/engine-e-stack.md",
+      [
+        "engine e versão",
+        "linguagem",
+        "ferramentas de arte e áudio",
+        "plugins permitidos e proibidos",
+        "CI e nomes de variáveis de ambiente"
+      ],
+      "Justifique a engine em uma linha."
+    ],
+    [
+      "SOURCE/03-tecnico/arquitetura-de-codigo.md",
+      [
+        "estrutura de pastas da engine",
+        "padrões de código",
+        "sistemas centrais (estado, save, input, áudio)",
+        "formato e versão do save"
+      ],
+      "Reforce: nenhum valor de balanceamento no código; inclua diagrama Mermaid."
+    ],
+    [
+      "SOURCE/03-tecnico/mapa-cenas-nodos.md",
+      [
+        "cena principal e hierarquia de cenas",
+        "cenas reutilizáveis (jogador, inimigo, UI)",
+        "camadas e máscaras de colisão",
+        "grupos/tags",
+        "regras de composição"
+      ],
+      "Desenhe a árvore de cenas em bloco de código e a tabela de camadas de colisão."
+    ],
+    [
+      "SOURCE/03-tecnico/contrato-de-eventos.md",
+      [
+        "eventos/sinais do jogo",
+        "emissor e ouvintes de cada um",
+        "payload de cada evento",
+        "regras de acoplamento"
+      ],
+      "Monte a tabela de eventos; regra: sistemas só se comunicam por eventos."
+    ],
+    [
+      "SOURCE/03-tecnico/performance-e-plataformas.md",
+      [
+        "FPS alvo",
+        "resolução",
+        "limite de memória",
+        "tamanho máx. de build",
+        "orçamentos (draw calls, entidades, carregamento)",
+        "como medir"
+      ],
+      "Use tabelas com metas por plataforma."
+    ],
+    [
+      "SOURCE/03-tecnico/pipeline-de-build.md",
+      [
+        "esquema de versão",
+        "etapas de build",
+        "branches",
+        "arquivos para Git LFS",
+        "checklist de release",
+        "canal de testes"
+      ],
+      "Alinhe com o .gitignore e o .gitattributes."
+    ],
+    [
+      "SOURCE/03-tecnico/multiplayer-e-rede.md",
+      [
+        "modelo de rede",
+        "autoridade do servidor",
+        "latência alvo",
+        "o que é sincronizado",
+        "anti-cheat",
+        "cenários de teste"
+      ],
+      "Seja explícito sobre quem decide o quê."
+    ],
+    [
+      "SOURCE/04-dados-de-design/entidades.json",
+      [
+        "entidades (inimigos, itens, armas)",
+        "atributos de cada uma",
+        "ids únicos em minúsculas"
+      ],
+      "Gere JSON válido, sem comentários, com a chave _leia_me; só ids e números, sem texto de design."
+    ],
+    [
+      "SOURCE/04-dados-de-design/habilidades.csv",
+      [
+        "habilidades",
+        "custo, dano, cooldown, alcance e demais parâmetros usados nas fórmulas",
+        "ids únicos"
+      ],
+      "Os nomes das colunas devem bater com os parâmetros citados em mecanicas.md."
+    ],
+    [
+      "SOURCE/05-agentes/guardrails.md",
+      [
+        "o que nunca fazer",
+        "ações com aprovação e quem aprova",
+        "ações livres",
+        "dados sensíveis"
+      ],
+      "Mantenha a regra de modos: SOURCE só é editável em PLANEJAMENTO."
+    ],
+    [
+      "SOURCE/05-agentes/papeis-e-fluxo.md",
+      [
+        "agentes (design, código, arte, narrativa, QA)",
+        "entrada e saída de cada um",
+        "ordem e handoffs",
+        "limites de autonomia"
+      ],
+      "Inclua fluxograma Mermaid; ninguém aprova o próprio trabalho."
+    ],
+    [
+      "SOURCE/05-agentes/skills/projetar-mecanica.md",
+      [
+        "arquivos a ler antes",
+        "passo a passo",
+        "formato da entrega",
+        "o que não fazer"
+      ],
+      "Receita curta, com checagem de pilar e escopo."
+    ],
+    [
+      "SOURCE/05-agentes/skills/implementar-feature.md",
+      [
+        "arquivos a ler antes",
+        "passo a passo",
+        "como validar",
+        "entrega esperada"
+      ],
+      "Inclua: ler valores dos dados, criar cena de teste, build sempre rodando."
+    ],
+    [
+      "SOURCE/05-agentes/skills/prototipar-greybox.md",
+      [
+        "tipo de protótipo",
+        "formas geométricas padrão",
+        "o que validar",
+        "critério de descarte"
+      ],
+      "Protótipo vai para _rascunhos e é descartável."
+    ],
+    [
+      "SOURCE/05-agentes/skills/juice-e-feel.md",
+      [
+        "efeitos permitidos (shake, partículas, hitstop, tween, som)",
+        "limites de intensidade",
+        "quando aplicar",
+        "como medir o ganho"
+      ],
+      "Dê valores-limite como parâmetros nomeados, não números soltos."
+    ],
+    [
+      "SOURCE/05-agentes/skills/corrigir-bug.md",
+      [
+        "como reproduzir",
+        "regras de isolamento",
+        "teste de regressão",
+        "onde registrar"
+      ],
+      "Regra: corrigir o mínimo, sem reescrever sistemas."
+    ],
+    [
+      "SOURCE/05-agentes/skills/criar-conteudo-narrativo.md",
+      [
+        "arquivos a ler",
+        "formato de diálogo",
+        "limites de texto",
+        "regras de lore"
+      ],
+      "Receita curta, respeitando voz de cada personagem."
+    ],
+    [
+      "SOURCE/05-agentes/skills/gerar-asset-brief.md",
+      [
+        "arquivos a ler",
+        "campos do brief",
+        "regra de origem e licença",
+        "onde entregar"
+      ],
+      "Inclua o registro no manifesto de assets."
+    ],
+    [
+      "SOURCE/05-agentes/skills/revisar-entrega.md",
+      [
+        "o que auditar",
+        "fontes a conferir",
+        "formato do parecer"
+      ],
+      "Quem revisa não é quem produziu; nunca marca 'aprovado'."
+    ],
+    [
+      "SOURCE/06-qualidade/definicao-de-pronto.md",
+      [
+        "critérios de feature",
+        "critérios de asset",
+        "quem aprova"
+      ],
+      "Liste como checklist e mantenha os estados do artefato."
+    ],
+    [
+      "SOURCE/06-qualidade/playtest-e-balanceamento.md",
+      [
+        "objetivo do primeiro playtest",
+        "perfil dos testadores",
+        "perguntas",
+        "métricas e metas",
+        "ciclo de balanceamento"
+      ],
+      "Inclua o roteiro de observação."
+    ],
+    [
+      "SOURCE/06-qualidade/checklist-revisao.md",
+      [
+        "itens de design",
+        "itens de código",
+        "itens de arte/áudio",
+        "itens gerais"
+      ],
+      "Cada item verificável com sim/não."
+    ],
+    [
+      "SOURCE/07-producao/escopo-mvp.md",
+      [
+        "objetivo do marco atual",
+        "itens dentro",
+        "itens fora",
+        "critérios de sucesso",
+        "ordem de corte"
+      ],
+      "Seja rígido no 'fora'."
+    ],
+    [
+      "SOURCE/07-producao/roadmap-e-marcos.md",
+      [
+        "marcos e datas",
+        "entregáveis por marco",
+        "dependências críticas",
+        "riscos"
+      ],
+      "Marque como 'a confirmar' datas sem definição."
+    ],
+    [
+      "SOURCE/08-referencias/jogos-referencia.md",
+      [
+        "jogos de referência",
+        "por que cada um",
+        "o que estudar",
+        "o que não copiar"
+      ],
+      "Foque em princípios; nunca em personagens, arte ou música."
+    ],
+    [
+      "SOURCE/08-referencias/exemplos-de-saida/exemplo-gdd-feature.md",
+      [
+        "spec de feature real e aprovada"
+      ],
+      "Apenas formate no padrão de cabeçalho."
+    ],
+    [
+      "SOURCE/08-referencias/templates/",
+      [
+        "seções padrão da spec de feature",
+        "campos do brief de asset"
+      ],
+      "Mantenha os blocos de cabeçalho."
+    ],
+    [
+      "SOURCE/09-decisoes/ADR-00X-titulo.md",
+      [
+        "situação",
+        "decisão",
+        "alternativas com prós e contras",
+        "consequências",
+        "decisores e data"
+      ],
+      "Crie a partir do ADR-000-modelo.md com o próximo número."
+    ]
+  ],
+  "perguntas_tecnicas": [
+    [
+      "Engine",
+      "Godot · Unity · Phaser/web · outra · não sei"
+    ],
+    [
+      "Plataforma",
+      "PC · web · mobile · console"
+    ],
+    [
+      "Gênero e perspectiva",
+      "texto curto (ex.: roguelite top-down)"
+    ]
+  ],
+  "rodada2_extras": [
+    "Pitch em 1 frase e fantasia do jogador",
+    "Core loop de 30 segundos (texto curto)",
+    "Até 3 jogos de referência"
+  ],
+  "prefill": {
+    "SOURCE/contexto-master.md": "nome, pitch, plataforma, regras inegociáveis; mapa só com arquivos existentes",
+    "SOURCE/00-conceito/game-concept.md": "nome, gênero, plataforma, pitch, público, fantasia do jogador",
+    "SOURCE/01-design/core-loop.md": "loop descrito na rodada 2",
+    "SOURCE/03-tecnico/engine-e-stack.md": "engine e plataforma (bloco D)",
+    "SOURCE/05-agentes/guardrails.md": "ações proibidas e que exigem aprovação informadas",
+    "SOURCE/06-qualidade/definicao-de-pronto.md": "critério de sucesso e quem aprova",
+    "SOURCE/07-producao/escopo-mvp.md": "prazo e o que fica fora",
+    "SOURCE/08-referencias/jogos-referencia.md": "jogos de referência citados"
+  },
+  "limite_linhas_contexto_master": {
+    "SIMPLES": 40,
+    "MEDIO": 80,
+    "COMPLEXO": 120
+  },
+  "ignorar_placeholders": [
+    "SOURCE/05-referencias/templates",
+    "SOURCE/08-referencias/templates",
+    "SOURCE/06-decisoes/ADR-000",
+    "SOURCE/09-decisoes/ADR-000"
+  ],
+  "roteamento": {
+    "Automação, agente de IA, cowork/documentos ou ferramenta interna": "ai-project-template",
+    "Produto SaaS (clientes assinam e usam pela web/app)": "ai-saas-template",
+    "Jogo (jam, protótipo ou lançamento)": "ai-game-template"
+  }
+}

@@ -1,0 +1,19 @@
+name: verificar-nivel
+on:
+  push:
+  pull_request:
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar nível, modo e arquivos
+        run: python tools/nivel.py verificar
+      - name: Proteger SOURCE em modo EXECUCAO
+        if: github.event_name == 'pull_request'
+        run: python tools/nivel.py proteger --base origin/${{ github.base_ref }}

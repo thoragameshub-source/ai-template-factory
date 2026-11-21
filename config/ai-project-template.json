@@ -1,0 +1,428 @@
+{
+  "tipo": "projeto-ia",
+  "repo": "ai-project-template",
+  "descricao": "automações, agentes de IA, cowork/documentos e ferramentas internas",
+  "niveis": {
+    "SIMPLES": {
+      "adiciona": [
+        "SOURCE/contexto-master.md",
+        "SOURCE/00-produto/visao-e-escopo.md",
+        "SOURCE/02-tecnico/stack.md",
+        "SOURCE/03-agentes/guardrails.md",
+        "SOURCE/03-agentes/skills/revisar-entrega.md",
+        "SOURCE/04-qualidade/definicao-de-pronto.md"
+      ],
+      "opcionais": []
+    },
+    "MEDIO": {
+      "adiciona": [
+        "SOURCE/00-produto/requisitos.md",
+        "SOURCE/01-dominio/glossario.md",
+        "SOURCE/01-dominio/regras-de-negocio.md",
+        "SOURCE/02-tecnico/arquitetura.md",
+        "SOURCE/02-tecnico/convencoes.md",
+        "SOURCE/04-qualidade/checklist-revisao.md",
+        "SOURCE/06-decisoes/ADR-000-modelo.md"
+      ],
+      "opcionais": [
+        "SOURCE/03-agentes/skills/escrever-codigo.md",
+        "SOURCE/03-agentes/skills/escrever-documento.md"
+      ]
+    },
+    "COMPLEXO": {
+      "adiciona": [
+        "SOURCE/01-dominio/fontes-de-verdade.md",
+        "SOURCE/05-referencias/templates/template-documento.md"
+      ],
+      "opcionais": [
+        "SOURCE/03-agentes/skills/escrever-codigo.md",
+        "SOURCE/03-agentes/skills/escrever-documento.md",
+        "SOURCE/03-agentes/papeis-e-fluxo.md",
+        "SOURCE/05-referencias/exemplos-de-saida/exemplo-documento.md",
+        "SOURCE/05-referencias/schemas/exemplo-payload.md",
+        "SOURCE/05-referencias/templates/template-prompt.md",
+        "SOURCE/06-decisoes/ADR-001-exemplo.md"
+      ]
+    }
+  },
+  "pontuacao": {
+    "perguntas": [
+      {
+        "tema": "Tamanho e prazo",
+        "opcoes": [
+          "Entrega em até 1 semana, 1 pessoa",
+          "2 a 8 semanas, 2 a 3 pessoas",
+          "Mais de 2 meses ou mais de 3 pessoas"
+        ]
+      },
+      {
+        "tema": "Integrações externas (APIs, ERPs, bancos, pagamentos)",
+        "opcoes": [
+          "0 a 1, de baixo risco",
+          "2 a 4",
+          "5 ou mais, ou qualquer integração crítica (pagamento, fiscal)"
+        ]
+      },
+      {
+        "tema": "Agentes e automações encadeadas",
+        "opcoes": [
+          "1 agente ou 1 fluxo simples",
+          "2 a 3 etapas ou agentes",
+          "4 ou mais, ou agentes autônomos em produção"
+        ]
+      },
+      {
+        "tema": "Dados e impacto",
+        "opcoes": [
+          "Nenhum dado sensível, uso interno",
+          "Dados internos da empresa ou de clientes sem impacto financeiro",
+          "Dados pessoais (LGPD), financeiros ou usuários pagantes"
+        ]
+      },
+      {
+        "tema": "Aprovação e equipe",
+        "opcoes": [
+          "1 pessoa aprova",
+          "2 a 3 pessoas",
+          "Times ou papéis separados (produto, técnico, jurídico)"
+        ]
+      }
+    ],
+    "faixas": {
+      "SIMPLES": [
+        0,
+        3
+      ],
+      "MEDIO": [
+        4,
+        7
+      ],
+      "COMPLEXO": [
+        8,
+        10
+      ]
+    },
+    "tres_respostas_2": 3,
+    "pisos": [
+      {
+        "pergunta": 2,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "integração crítica (pagamento, fiscal)"
+      },
+      {
+        "pergunta": 4,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "dados pessoais, financeiros ou usuários pagantes"
+      }
+    ]
+  },
+  "prefixos": {
+    "auto": "automação",
+    "agent": "agente de IA",
+    "cowork": "trabalho com documentos",
+    "tool": "ferramenta interna"
+  },
+  "exemplos": {
+    "SIMPLES": "Automação pontual (robô de relatório), script, landing page, documento",
+    "MEDIO": "Agente com integrações, MVP de SaaS, automação entre sistemas, app de uma área",
+    "COMPLEXO": "SaaS com clientes pagantes, vários agentes, integrações críticas, múltiplos times"
+  },
+  "exemplos_nome": "`auto-conciliacao-notas`, `agent-extracao-nfse`, `cowork-relatorio-mensal`",
+  "sinais": [
+    "Surgiu uma integração crítica (pagamento, fiscal) ou dados pessoais de clientes",
+    "Mais de um agente ou automação encadeada passou a rodar em produção",
+    "Mais de 2 pessoas passaram a aprovar entregas",
+    "O mesmo erro de contexto se repete (a IA 'esquece' regras): falta um arquivo do próximo nível"
+  ],
+  "pastas": [
+    [
+      "00-produto",
+      "visao-e-escopo.md e requisitos.md",
+      "problema; objetivo mensurável; dentro/fora do escopo; funcionalidades com prioridade e critério de aceite"
+    ],
+    [
+      "01-dominio",
+      "glossario.md e regras-de-negocio.md",
+      "termos do negócio; regras quando/então/exceção/fonte; cálculos com exemplo"
+    ],
+    [
+      "02-tecnico",
+      "stack.md, arquitetura.md e convencoes.md",
+      "linguagem e versões; componentes e integrações (pode/não pode); padrão de nomes, testes e erros"
+    ],
+    [
+      "03-agentes",
+      "guardrails.md e skills/revisar-entrega.md",
+      "ações proibidas; ações com aprovação e quem aprova; formato do parecer de revisão"
+    ],
+    [
+      "04-qualidade",
+      "definicao-de-pronto.md e checklist-revisao.md",
+      "critérios de pronto; itens de revisão de conteúdo, forma e técnica"
+    ]
+  ],
+  "unico_dados": "objetivo em 3 linhas [[objetivo]]; quem usa [[usuário]]; dentro e fora do escopo [[escopo]]; stack e versões [[stack]]; ações proibidas e que exigem aprovação [[guardrails]]; critérios de pronto [[pronto]]",
+  "gate_extra": "núcleo preenchido e módulos não usados apagados",
+  "prompts": [
+    [
+      "SOURCE/contexto-master.md",
+      [
+        "nome do projeto",
+        "objetivo em 3-5 linhas",
+        "perfis de usuário e o que fazem com o resultado",
+        "3 a 7 regras inegociáveis",
+        "módulos mantidos"
+      ],
+      "Preencha todas as seções, monte o mapa 'leia quando' só com arquivos que existem e mantenha até 2 páginas. Reexecute ao final do planejamento para atualizar o mapa."
+    ],
+    [
+      "SOURCE/00-produto/visao-e-escopo.md",
+      [
+        "problema",
+        "objetivo mensurável",
+        "resultado esperado",
+        "itens dentro do escopo",
+        "itens fora do escopo",
+        "premissas e restrições",
+        "métricas (hoje e meta)"
+      ],
+      "Escreva de forma objetiva; o 'fora do escopo' deve ser explícito."
+    ],
+    [
+      "SOURCE/00-produto/requisitos.md",
+      [
+        "funcionalidades desejadas",
+        "prioridade de cada uma",
+        "critério de aceite de cada uma",
+        "requisitos não funcionais (segurança, LGPD, desempenho)"
+      ],
+      "Numere RF-xx e RNF-xx; cada requisito precisa de critério de aceite testável."
+    ],
+    [
+      "SOURCE/01-dominio/glossario.md",
+      [
+        "10 a 30 termos do negócio",
+        "significado de cada termo",
+        "siglas e sinônimos",
+        "termos que se confundem"
+      ],
+      "Ordene alfabeticamente e inclua a coluna 'não confundir com'."
+    ],
+    [
+      "SOURCE/01-dominio/regras-de-negocio.md",
+      [
+        "regras em linguagem natural",
+        "exceções de cada regra",
+        "cálculos com exemplo numérico",
+        "fonte/validador de cada regra"
+      ],
+      "Converta em RN-xx no formato quando/então/exceção/fonte e inclua um exemplo numérico por cálculo."
+    ],
+    [
+      "SOURCE/01-dominio/fontes-de-verdade.md",
+      [
+        "fontes oficiais por assunto",
+        "link ou local de cada uma",
+        "responsável e frequência de revisão",
+        "ordem de prevalência em conflito",
+        "o que fazer se a fonte estiver indisponível"
+      ],
+      "Monte a hierarquia e a tabela de fontes."
+    ],
+    [
+      "SOURCE/02-tecnico/stack.md",
+      [
+        "linguagem e versão",
+        "framework",
+        "banco/armazenamento",
+        "modelo de IA a usar",
+        "bibliotecas permitidas e proibidas",
+        "nomes (sem valores) das variáveis de ambiente"
+      ],
+      "Justifique cada escolha em uma linha."
+    ],
+    [
+      "SOURCE/02-tecnico/arquitetura.md",
+      [
+        "componentes e responsabilidades",
+        "integrações (sistema, tipo, autenticação)",
+        "o que o agente pode e não pode fazer em cada integração",
+        "fluxo de dados",
+        "entidades principais"
+      ],
+      "Inclua um diagrama Mermaid e a tabela de integrações com 'pode' e 'não pode'."
+    ],
+    [
+      "SOURCE/02-tecnico/convencoes.md",
+      [
+        "padrão de nomes",
+        "linter/formatter",
+        "regra de tratamento de erros",
+        "política de testes",
+        "padrão de git",
+        "idioma de código e documentos"
+      ],
+      "Dê um exemplo concreto por convenção."
+    ],
+    [
+      "SOURCE/03-agentes/guardrails.md",
+      [
+        "ações proibidas",
+        "ações que exigem aprovação e quem aprova",
+        "ações livres",
+        "dados sensíveis e como tratá-los"
+      ],
+      "Mantenha a regra de modos: SOURCE só é editável em PLANEJAMENTO."
+    ],
+    [
+      "SOURCE/03-agentes/papeis-e-fluxo.md",
+      [
+        "agentes (nome, missão)",
+        "entrada e saída de cada um",
+        "ordem de execução",
+        "regras de handoff",
+        "limites de autonomia"
+      ],
+      "Inclua um fluxograma Mermaid; nenhum agente aprova o próprio trabalho."
+    ],
+    [
+      "SOURCE/03-agentes/skills/escrever-codigo.md",
+      [
+        "gatilhos da tarefa",
+        "arquivos a ler antes",
+        "passo a passo preferido",
+        "entrega esperada",
+        "anti-padrões"
+      ],
+      "Escreva como receita numerada e curta."
+    ],
+    [
+      "SOURCE/03-agentes/skills/escrever-documento.md",
+      [
+        "tipos de documento",
+        "tom e estilo",
+        "estrutura padrão",
+        "regras de citação de fontes"
+      ],
+      "Escreva como receita numerada e curta."
+    ],
+    [
+      "SOURCE/03-agentes/skills/revisar-entrega.md",
+      [
+        "o que será auditado",
+        "fontes de verdade a conferir",
+        "formato do parecer"
+      ],
+      "Mantenha a regra: quem revisa não é quem produziu e nunca marca 'aprovado'."
+    ],
+    [
+      "SOURCE/04-qualidade/definicao-de-pronto.md",
+      [
+        "critérios obrigatórios de entrega",
+        "critérios específicos do projeto",
+        "quem aprova cada tipo de entrega"
+      ],
+      "Liste como checklist e mantenha a tabela de status."
+    ],
+    [
+      "SOURCE/04-qualidade/checklist-revisao.md",
+      [
+        "itens de conteúdo",
+        "itens de forma",
+        "itens técnicos",
+        "itens próprios do projeto"
+      ],
+      "Cada item deve ser verificável com sim/não."
+    ],
+    [
+      "SOURCE/05-referencias/exemplos-de-saida/exemplo-documento.md",
+      [
+        "entrega real aprovada para usar de padrão-ouro",
+        "dados sensíveis a mascarar"
+      ],
+      "Apenas formate e anonimize; não altere o conteúdo."
+    ],
+    [
+      "SOURCE/05-referencias/schemas/exemplo-payload.md",
+      [
+        "campos de entrada/saída",
+        "tipos e obrigatoriedade",
+        "1 a 2 exemplos fictícios"
+      ],
+      "Gere JSON/CSV válidos com dados fictícios."
+    ],
+    [
+      "SOURCE/05-referencias/templates/template-documento.md",
+      [
+        "seções padrão",
+        "tom",
+        "tipos de documento atendidos"
+      ],
+      "Mantenha o bloco de cabeçalho de rastreabilidade."
+    ],
+    [
+      "SOURCE/05-referencias/templates/template-prompt.md",
+      [
+        "tarefas recorrentes",
+        "regras fixas de todo prompt",
+        "formato de saída padrão"
+      ],
+      "Inclua um exemplo preenchido real do projeto."
+    ],
+    [
+      "SOURCE/06-decisoes/ADR-00X-titulo.md",
+      [
+        "situação que exigiu decidir",
+        "decisão tomada",
+        "alternativas com prós e contras",
+        "consequências e riscos",
+        "decisores e data"
+      ],
+      "Crie o arquivo a partir do ADR-000-modelo.md com o próximo número."
+    ]
+  ],
+  "perguntas_tecnicas": [
+    [
+      "Onde vai rodar / ferramenta principal",
+      "Claude Code · Cowork · n8n/Make · Power Automate · script Python · outro"
+    ],
+    [
+      "Linguagem ou plataforma",
+      "Python · TypeScript · low-code · não sei"
+    ],
+    [
+      "Sistemas que vai acessar",
+      "lista curta ou 'nenhum'"
+    ]
+  ],
+  "rodada2_extras": [
+    "Integrações: nome do sistema e o que lê/escreve",
+    "Ações que a IA nunca pode fazer sozinha"
+  ],
+  "prefill": {
+    "SOURCE/contexto-master.md": "nome, objetivo, usuários, regras inegociáveis; mapa só com arquivos existentes",
+    "SOURCE/00-produto/visao-e-escopo.md": "problema, objetivo, dentro/fora do escopo, métrica de sucesso, prazo",
+    "SOURCE/02-tecnico/stack.md": "respostas do bloco D",
+    "SOURCE/02-tecnico/arquitetura.md": "lista dos sistemas/integrações citados (sem desenhar a solução)",
+    "SOURCE/03-agentes/guardrails.md": "ações proibidas e que exigem aprovação informadas",
+    "SOURCE/04-qualidade/definicao-de-pronto.md": "métrica de sucesso e quem aprova"
+  },
+  "limite_linhas_contexto_master": {
+    "SIMPLES": 40,
+    "MEDIO": 80,
+    "COMPLEXO": 120
+  },
+  "ignorar_placeholders": [
+    "SOURCE/05-referencias/templates",
+    "SOURCE/08-referencias/templates",
+    "SOURCE/06-decisoes/ADR-000",
+    "SOURCE/09-decisoes/ADR-000"
+  ],
+  "roteamento": {
+    "Automação, agente de IA, cowork/documentos ou ferramenta interna": "ai-project-template",
+    "Produto SaaS (clientes assinam e usam pela web/app)": "ai-saas-template",
+    "Jogo (jam, protótipo ou lançamento)": "ai-game-template"
+  }
+}

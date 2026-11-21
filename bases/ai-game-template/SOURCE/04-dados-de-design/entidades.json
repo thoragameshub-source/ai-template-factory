@@ -1,0 +1,12 @@
+{
+  "_leia_me": "Só ids e números. Texto de design fica em 01-design. Valores nunca vão para o código. Edição: humano ou IA em PLANEJAMENTO.",
+  "inimigos": {
+    "sombra_basica":  { "vida": 40,  "dano_contato": 8,  "velocidade": 2.0, "drop_fragmentos": 2 },
+    "vulto_veloz":    { "vida": 25,  "dano_contato": 12, "velocidade": 4.5, "drop_fragmentos": 3 },
+    "guardiao_fosso": { "vida": 300, "dano_contato": 20, "velocidade": 1.2, "drop_fragmentos": 25 }
+  },
+  "itens": {
+    "fragmento_luz":  { "raridade": "comum",  "valor": 1 },
+    "lente_antiga":   { "raridade": "rara",   "valor": 15 }
+  }
+}

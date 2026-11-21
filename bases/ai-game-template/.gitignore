@@ -1,0 +1,22 @@
+# Builds e exportações (não versionar)
+ARTEFATO/builds/*
+!ARTEFATO/builds/README.md
+
+# Caches das engines (ajuste para a sua)
+ARTEFATO/jogo/.godot/
+ARTEFATO/jogo/Library/
+ARTEFATO/jogo/Temp/
+ARTEFATO/jogo/obj/
+ARTEFATO/jogo/Builds/
+ARTEFATO/jogo/Intermediate/
+ARTEFATO/jogo/Binaries/
+ARTEFATO/jogo/Saved/
+
+# Segredos
+.env
+*.key
+secrets.*
+
+# Sistema
+.DS_Store
+Thumbs.db

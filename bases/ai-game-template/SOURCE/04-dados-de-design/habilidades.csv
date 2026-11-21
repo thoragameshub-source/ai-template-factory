@@ -1,0 +1,4 @@
+id,nome,custo_luz,dano,cooldown_s,alcance_base,luz_por_segundo,multiplicador_sombra,shake_intensidade_max,hitstop_ms_max,notas
+pulso_luz,Pulso de Luz,10,25,1.5,4,10,2.0,6,60,Dobra dano contra sombras
+lampada_orbital,Lâmpada Orbital,15,8,0.5,2,0,1.0,2,0,Dano contínuo
+flash_cego,Flash Cego,30,0,8,6,0,1.0,4,0,Atordoa 2s

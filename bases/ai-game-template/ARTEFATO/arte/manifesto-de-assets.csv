@@ -1,0 +1,3 @@
+id,arquivo,origem,ferramenta_ou_fonte,prompt_ou_referencia,licenca,uso_comercial,status
+spr_enemy_sombra_idle_v01,jogo/assets/sprites/spr_enemy_sombra_idle_v01.png,humano,Aseprite,conforme art-bible,propria,sim,aprovado
+sfx_pulso_carga_v01,jogo/assets/audio/sfx_pulso_carga_v01.ogg,loja,Pacote de SFX (exemplo),https://exemplo.com/pacote,comercial-loja,sim,revisado

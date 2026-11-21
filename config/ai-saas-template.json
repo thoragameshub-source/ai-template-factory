@@ -1,0 +1,603 @@
+{
+  "tipo": "saas",
+  "repo": "ai-saas-template",
+  "descricao": "produtos SaaS (do MVP de validação ao B2B com contratos)",
+  "niveis": {
+    "SIMPLES": {
+      "adiciona": [
+        "SOURCE/contexto-master.md",
+        "SOURCE/00-produto/visao-e-escopo.md",
+        "SOURCE/00-produto/requisitos.md",
+        "SOURCE/02-tecnico/stack.md",
+        "SOURCE/02-tecnico/arquitetura.md",
+        "SOURCE/02-tecnico/modelo-de-dados.md",
+        "SOURCE/02-tecnico/autenticacao-e-permissoes.md",
+        "SOURCE/03-agentes/guardrails.md",
+        "SOURCE/03-agentes/skills/escrever-codigo.md",
+        "SOURCE/03-agentes/skills/revisar-entrega.md",
+        "SOURCE/04-qualidade/definicao-de-pronto.md"
+      ],
+      "opcionais": []
+    },
+    "MEDIO": {
+      "adiciona": [
+        "SOURCE/00-produto/personas-e-jornadas.md",
+        "SOURCE/00-produto/planos-e-precos.md",
+        "SOURCE/01-dominio/glossario.md",
+        "SOURCE/01-dominio/regras-de-negocio.md",
+        "SOURCE/02-tecnico/convencoes.md",
+        "SOURCE/02-tecnico/contratos-de-api.md",
+        "SOURCE/02-tecnico/multi-tenancy.md",
+        "SOURCE/02-tecnico/cobranca-e-assinaturas.md",
+        "SOURCE/03-agentes/skills/implementar-endpoint.md",
+        "SOURCE/03-agentes/skills/criar-migracao.md",
+        "SOURCE/04-qualidade/seguranca-e-lgpd.md",
+        "SOURCE/04-qualidade/estrategia-de-testes.md",
+        "SOURCE/04-qualidade/checklist-revisao.md",
+        "SOURCE/07-operacao/roadmap-e-releases.md",
+        "SOURCE/06-decisoes/ADR-000-modelo.md"
+      ],
+      "opcionais": [
+        "SOURCE/00-produto/metricas-de-produto.md",
+        "SOURCE/02-tecnico/infra-e-observabilidade.md",
+        "SOURCE/03-agentes/skills/escrever-documento.md"
+      ]
+    },
+    "COMPLEXO": {
+      "adiciona": [
+        "SOURCE/00-produto/metricas-de-produto.md",
+        "SOURCE/02-tecnico/infra-e-observabilidade.md",
+        "SOURCE/07-operacao/suporte-e-incidentes.md",
+        "SOURCE/01-dominio/fontes-de-verdade.md",
+        "SOURCE/05-referencias/templates/template-documento.md"
+      ],
+      "opcionais": [
+        "SOURCE/03-agentes/skills/escrever-documento.md",
+        "SOURCE/03-agentes/papeis-e-fluxo.md",
+        "SOURCE/05-referencias/exemplos-de-saida/exemplo-documento.md",
+        "SOURCE/05-referencias/schemas/exemplo-payload.md",
+        "SOURCE/05-referencias/templates/template-prompt.md",
+        "SOURCE/06-decisoes/ADR-001-exemplo.md"
+      ]
+    }
+  },
+  "pontuacao": {
+    "perguntas": [
+      {
+        "tema": "Clientes e receita",
+        "opcoes": [
+          "Sem cobrança ainda (validação/beta grátis)",
+          "Assinatura paga, B2C ou poucos clientes B2B",
+          "Muitos pagantes ou B2B com contrato/SLA"
+        ]
+      },
+      {
+        "tema": "Contas e permissões",
+        "opcoes": [
+          "Um tipo de usuário, sem times",
+          "Contas com times e 2 a 3 papéis",
+          "Multi-empresa com papéis granulares, SSO ou auditoria"
+        ]
+      },
+      {
+        "tema": "Dados",
+        "opcoes": [
+          "Só e-mail e dados do próprio produto",
+          "Dados pessoais comuns (nome, telefone, endereço)",
+          "Dados sensíveis, financeiros ou fiscais"
+        ]
+      },
+      {
+        "tema": "Integrações",
+        "opcoes": [
+          "0 ou 1, de baixo risco",
+          "Gateway de pagamento ou 2 a 4 APIs",
+          "5 ou mais, ou críticas (fiscal/NF, ERP, banco)"
+        ]
+      },
+      {
+        "tema": "Escopo e equipe",
+        "opcoes": [
+          "1 a 2 módulos, 1 pessoa",
+          "3 a 5 módulos, 2 a 3 pessoas",
+          "6 ou mais módulos ou 4 ou mais pessoas"
+        ]
+      }
+    ],
+    "faixas": {
+      "SIMPLES": [
+        0,
+        3
+      ],
+      "MEDIO": [
+        4,
+        7
+      ],
+      "COMPLEXO": [
+        8,
+        10
+      ]
+    },
+    "tres_respostas_2": 3,
+    "pisos": [
+      {
+        "pergunta": 1,
+        "a_partir_de": 1,
+        "minimo": "MEDIO",
+        "motivo": "cobrança exige planos, assinaturas e isolamento entre clientes"
+      },
+      {
+        "pergunta": 3,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "dados sensíveis, financeiros ou fiscais (LGPD)"
+      },
+      {
+        "pergunta": 4,
+        "a_partir_de": 2,
+        "minimo": "MEDIO",
+        "motivo": "integração crítica"
+      }
+    ]
+  },
+  "prefixos": {
+    "saas": "produto SaaS"
+  },
+  "exemplos": {
+    "SIMPLES": "MVP de validação, micro-SaaS sem cobrança, ferramenta web de um usuário",
+    "MEDIO": "SaaS com assinatura, times e papéis, poucas integrações",
+    "COMPLEXO": "B2B com contrato, multi-empresa com SSO, dados fiscais/sensíveis, várias integrações"
+  },
+  "exemplos_nome": "`saas-gestao-fiscal`, `saas-agenda-clinicas`",
+  "sinais": [
+    "Primeiro cliente pagante ou plano pago lançado (do SIMPLES para o MÉDIO)",
+    "Entrou SSO, auditoria ou cliente B2B com contrato",
+    "Mais de 3 pessoas no time ou módulos novos todo mês",
+    "Incidentes em produção se repetem: faltam `suporte-e-incidentes` e `infra-e-observabilidade`"
+  ],
+  "pastas": [
+    [
+      "00-produto",
+      "visao-e-escopo.md, requisitos.md, personas-e-jornadas.md e planos-e-precos.md",
+      "problema; escopo do MVP; requisitos com critério de aceite; personas e jornada até o primeiro valor; planos, limites e trial"
+    ],
+    [
+      "01-dominio",
+      "glossario.md e regras-de-negocio.md",
+      "termos do negócio; regras quando/então/exceção com exemplo numérico"
+    ],
+    [
+      "02-tecnico",
+      "stack.md, arquitetura.md, convencoes.md, modelo-de-dados.md, contratos-de-api.md, multi-tenancy.md, autenticacao-e-permissoes.md e cobranca-e-assinaturas.md",
+      "stack; componentes; entidades; endpoints; isolamento de tenant; papéis e permissões; provedor e estados da assinatura"
+    ],
+    [
+      "03-agentes",
+      "guardrails.md e skills implementar-endpoint, criar-migracao, escrever-codigo, revisar-entrega",
+      "ações proibidas e com aprovação; passos extras das receitas"
+    ],
+    [
+      "04-qualidade",
+      "definicao-de-pronto.md, checklist-revisao.md, seguranca-e-lgpd.md e estrategia-de-testes.md",
+      "critérios de pronto; dados pessoais com base legal; ferramentas e jornadas de teste"
+    ],
+    [
+      "07-operacao",
+      "roadmap-e-releases.md",
+      "itens do MVP; agora/próximo/depois; critério de lançamento"
+    ]
+  ],
+  "unico_dados": "produto e cliente [[produto]]; escopo do MVP [[escopo]]; requisitos com critério de aceite [[requisitos]]; stack [[stack]]; componentes e integrações [[arquitetura]]; entidades principais [[dados]]; login e papéis [[auth]]; ações proibidas [[guardrails]]; critérios de pronto [[pronto]]",
+  "gate_extra": "modelo de dados, permissões e isolamento de tenant definidos; preços só em planos-e-precos",
+  "prompts": [
+    [
+      "SOURCE/contexto-master.md",
+      [
+        "nome do projeto",
+        "objetivo em 3-5 linhas",
+        "perfis de usuário e o que fazem com o resultado",
+        "3 a 7 regras inegociáveis",
+        "módulos mantidos"
+      ],
+      "Preencha todas as seções, monte o mapa 'leia quando' só com arquivos que existem e mantenha até 2 páginas. Reexecute ao final do planejamento para atualizar o mapa."
+    ],
+    [
+      "SOURCE/00-produto/visao-e-escopo.md",
+      [
+        "problema",
+        "objetivo mensurável",
+        "resultado esperado",
+        "itens dentro do escopo",
+        "itens fora do escopo",
+        "premissas e restrições",
+        "métricas (hoje e meta)"
+      ],
+      "Escreva de forma objetiva; o 'fora do escopo' deve ser explícito."
+    ],
+    [
+      "SOURCE/00-produto/requisitos.md",
+      [
+        "funcionalidades desejadas",
+        "prioridade de cada uma",
+        "critério de aceite de cada uma",
+        "requisitos não funcionais (segurança, LGPD, desempenho)"
+      ],
+      "Numere RF-xx e RNF-xx; cada requisito precisa de critério de aceite testável."
+    ],
+    [
+      "SOURCE/00-produto/personas-e-jornadas.md",
+      [
+        "até 3 personas com dor e sucesso",
+        "etapas da jornada até o primeiro valor",
+        "momento 'aha'",
+        "passos do onboarding"
+      ],
+      "Monte a tabela de personas e a jornada com riscos de abandono."
+    ],
+    [
+      "SOURCE/00-produto/planos-e-precos.md",
+      [
+        "planos com preço e limites",
+        "regras de trial",
+        "o que acontece no limite",
+        "upgrade/downgrade",
+        "inadimplência e cancelamento"
+      ],
+      "Valores só neste arquivo; o que não foi decidido fica 'a confirmar'."
+    ],
+    [
+      "SOURCE/00-produto/metricas-de-produto.md",
+      [
+        "North Star",
+        "etapas do funil e metas",
+        "eventos a medir",
+        "métricas de negócio"
+      ],
+      "Use nomes de evento no padrão objeto_acao e nunca coloque dados pessoais em propriedades."
+    ],
+    [
+      "SOURCE/01-dominio/glossario.md",
+      [
+        "10 a 30 termos do negócio",
+        "significado de cada termo",
+        "siglas e sinônimos",
+        "termos que se confundem"
+      ],
+      "Ordene alfabeticamente e inclua a coluna 'não confundir com'."
+    ],
+    [
+      "SOURCE/01-dominio/regras-de-negocio.md",
+      [
+        "regras em linguagem natural",
+        "exceções de cada regra",
+        "cálculos com exemplo numérico",
+        "fonte/validador de cada regra"
+      ],
+      "Converta em RN-xx no formato quando/então/exceção/fonte e inclua um exemplo numérico por cálculo."
+    ],
+    [
+      "SOURCE/01-dominio/fontes-de-verdade.md",
+      [
+        "fontes oficiais por assunto",
+        "link ou local de cada uma",
+        "responsável e frequência de revisão",
+        "ordem de prevalência em conflito",
+        "o que fazer se a fonte estiver indisponível"
+      ],
+      "Monte a hierarquia e a tabela de fontes."
+    ],
+    [
+      "SOURCE/02-tecnico/stack.md",
+      [
+        "linguagem e versão",
+        "framework",
+        "banco/armazenamento",
+        "modelo de IA a usar",
+        "bibliotecas permitidas e proibidas",
+        "nomes (sem valores) das variáveis de ambiente"
+      ],
+      "Justifique cada escolha em uma linha."
+    ],
+    [
+      "SOURCE/02-tecnico/arquitetura.md",
+      [
+        "componentes e responsabilidades",
+        "integrações (sistema, tipo, autenticação)",
+        "o que o agente pode e não pode fazer em cada integração",
+        "fluxo de dados",
+        "entidades principais"
+      ],
+      "Inclua um diagrama Mermaid e a tabela de integrações com 'pode' e 'não pode'."
+    ],
+    [
+      "SOURCE/02-tecnico/convencoes.md",
+      [
+        "padrão de nomes",
+        "linter/formatter",
+        "regra de tratamento de erros",
+        "política de testes",
+        "padrão de git",
+        "idioma de código e documentos"
+      ],
+      "Dê um exemplo concreto por convenção."
+    ],
+    [
+      "SOURCE/02-tecnico/modelo-de-dados.md",
+      [
+        "entidades principais",
+        "quais pertencem ao tenant",
+        "dados pessoais por entidade",
+        "relacionamentos",
+        "ferramenta de migração"
+      ],
+      "Inclua o diagrama mermaid e os campos padrão."
+    ],
+    [
+      "SOURCE/02-tecnico/contratos-de-api.md",
+      [
+        "estilo de API",
+        "autenticação",
+        "endpoints principais com papel",
+        "webhooks"
+      ],
+      "Use o padrão de erro do template e marque endpoints assíncronos."
+    ],
+    [
+      "SOURCE/02-tecnico/multi-tenancy.md",
+      [
+        "estratégia de isolamento",
+        "como o tenant_id chega à consulta",
+        "usuário em vários tenants"
+      ],
+      "Mantenha as regras obrigatórias e o teste de isolamento."
+    ],
+    [
+      "SOURCE/02-tecnico/autenticacao-e-permissoes.md",
+      [
+        "provedor de autenticação",
+        "métodos de login",
+        "papéis",
+        "matriz de permissões"
+      ],
+      "Monte a matriz ação x papel com ✅/⛔."
+    ],
+    [
+      "SOURCE/02-tecnico/cobranca-e-assinaturas.md",
+      [
+        "provedor de pagamento",
+        "métodos",
+        "estados da assinatura e acesso",
+        "webhooks tratados",
+        "nota fiscal da assinatura"
+      ],
+      "Mantenha as regras de idempotência e de fonte da verdade."
+    ],
+    [
+      "SOURCE/02-tecnico/infra-e-observabilidade.md",
+      [
+        "ambientes",
+        "fluxo de deploy e rollback",
+        "ferramentas de log, erro e uptime",
+        "backups",
+        "limite de custo"
+      ],
+      "Deixe explícito que produção só recebe deploy pelo pipeline."
+    ],
+    [
+      "SOURCE/03-agentes/guardrails.md",
+      [
+        "ações proibidas",
+        "ações que exigem aprovação e quem aprova",
+        "ações livres",
+        "dados sensíveis e como tratá-los"
+      ],
+      "Mantenha a regra de modos: SOURCE só é editável em PLANEJAMENTO."
+    ],
+    [
+      "SOURCE/03-agentes/papeis-e-fluxo.md",
+      [
+        "agentes (nome, missão)",
+        "entrada e saída de cada um",
+        "ordem de execução",
+        "regras de handoff",
+        "limites de autonomia"
+      ],
+      "Inclua um fluxograma Mermaid; nenhum agente aprova o próprio trabalho."
+    ],
+    [
+      "SOURCE/03-agentes/skills/escrever-codigo.md",
+      [
+        "gatilhos da tarefa",
+        "arquivos a ler antes",
+        "passo a passo preferido",
+        "entrega esperada",
+        "anti-padrões"
+      ],
+      "Escreva como receita numerada e curta."
+    ],
+    [
+      "SOURCE/03-agentes/skills/escrever-documento.md",
+      [
+        "tipos de documento",
+        "tom e estilo",
+        "estrutura padrão",
+        "regras de citação de fontes"
+      ],
+      "Escreva como receita numerada e curta."
+    ],
+    [
+      "SOURCE/03-agentes/skills/revisar-entrega.md",
+      [
+        "o que será auditado",
+        "fontes de verdade a conferir",
+        "formato do parecer"
+      ],
+      "Mantenha a regra: quem revisa não é quem produziu e nunca marca 'aprovado'."
+    ],
+    [
+      "SOURCE/03-agentes/skills/implementar-endpoint.md",
+      [
+        "passos extras do projeto",
+        "testes obrigatórios adicionais"
+      ],
+      "Mantenha a receita curta (até 10 passos)."
+    ],
+    [
+      "SOURCE/03-agentes/skills/criar-migracao.md",
+      [
+        "ferramenta de migração",
+        "regras extras do banco"
+      ],
+      "Mantenha a proibição de executar em produção."
+    ],
+    [
+      "SOURCE/04-qualidade/definicao-de-pronto.md",
+      [
+        "critérios obrigatórios de entrega",
+        "critérios específicos do projeto",
+        "quem aprova cada tipo de entrega"
+      ],
+      "Liste como checklist e mantenha a tabela de status."
+    ],
+    [
+      "SOURCE/04-qualidade/checklist-revisao.md",
+      [
+        "itens de conteúdo",
+        "itens de forma",
+        "itens técnicos",
+        "itens próprios do projeto"
+      ],
+      "Cada item deve ser verificável com sim/não."
+    ],
+    [
+      "SOURCE/04-qualidade/seguranca-e-lgpd.md",
+      [
+        "dados pessoais tratados com finalidade e base legal",
+        "retenção",
+        "canal do DPO",
+        "suboperadores"
+      ],
+      "Não invente base legal; use 'a confirmar com jurídico' quando não souber."
+    ],
+    [
+      "SOURCE/04-qualidade/estrategia-de-testes.md",
+      [
+        "ferramentas de teste",
+        "jornadas E2E obrigatórias",
+        "cobertura mínima"
+      ],
+      "Mantenha o teste de isolamento de tenant."
+    ],
+    [
+      "SOURCE/05-referencias/exemplos-de-saida/exemplo-documento.md",
+      [
+        "entrega real aprovada para usar de padrão-ouro",
+        "dados sensíveis a mascarar"
+      ],
+      "Apenas formate e anonimize; não altere o conteúdo."
+    ],
+    [
+      "SOURCE/05-referencias/schemas/exemplo-payload.md",
+      [
+        "campos de entrada/saída",
+        "tipos e obrigatoriedade",
+        "1 a 2 exemplos fictícios"
+      ],
+      "Gere JSON/CSV válidos com dados fictícios."
+    ],
+    [
+      "SOURCE/05-referencias/templates/template-documento.md",
+      [
+        "seções padrão",
+        "tom",
+        "tipos de documento atendidos"
+      ],
+      "Mantenha o bloco de cabeçalho de rastreabilidade."
+    ],
+    [
+      "SOURCE/05-referencias/templates/template-prompt.md",
+      [
+        "tarefas recorrentes",
+        "regras fixas de todo prompt",
+        "formato de saída padrão"
+      ],
+      "Inclua um exemplo preenchido real do projeto."
+    ],
+    [
+      "SOURCE/06-decisoes/ADR-00X-titulo.md",
+      [
+        "situação que exigiu decidir",
+        "decisão tomada",
+        "alternativas com prós e contras",
+        "consequências e riscos",
+        "decisores e data"
+      ],
+      "Crie o arquivo a partir do ADR-000-modelo.md com o próximo número."
+    ],
+    [
+      "SOURCE/07-operacao/roadmap-e-releases.md",
+      [
+        "itens do MVP",
+        "agora/próximo/depois",
+        "releases com critério de lançamento",
+        "uso de feature flags"
+      ],
+      "O MVP deve ser o mínimo para cobrar o primeiro cliente."
+    ],
+    [
+      "SOURCE/07-operacao/suporte-e-incidentes.md",
+      [
+        "canais e horários de suporte",
+        "responsáveis por severidade",
+        "canal de comunicação com clientes"
+      ],
+      "Mantenha a regra de que a IA não faz deploy em produção."
+    ]
+  ],
+  "perguntas_tecnicas": [
+    [
+      "Stack",
+      "Next.js + Postgres · Supabase · Python/FastAPI · low-code · não sei"
+    ],
+    [
+      "Cobrança",
+      "Stripe · Asaas · Pagar.me · ainda não cobra"
+    ],
+    [
+      "Login",
+      "e-mail e senha · Google · SSO · não sei"
+    ]
+  ],
+  "rodada2_extras": [
+    "Planos e preços pensados (se houver)",
+    "Papéis de usuário (ex.: admin, membro)",
+    "Dados pessoais que o produto guarda"
+  ],
+  "prefill": {
+    "SOURCE/contexto-master.md": "produto, clientes e usuários, regras inegociáveis; mapa só com arquivos existentes",
+    "SOURCE/00-produto/visao-e-escopo.md": "problema, objetivo, escopo do MVP, fora do escopo, métrica, prazo",
+    "SOURCE/02-tecnico/stack.md": "stack (D1)",
+    "SOURCE/02-tecnico/autenticacao-e-permissoes.md": "login (D3) e papéis citados",
+    "SOURCE/02-tecnico/cobranca-e-assinaturas.md": "provedor de cobrança (D2)",
+    "SOURCE/00-produto/planos-e-precos.md": "planos e preços citados (o resto 'a confirmar')",
+    "SOURCE/04-qualidade/seguranca-e-lgpd.md": "dados pessoais citados (base legal 'a confirmar')",
+    "SOURCE/03-agentes/guardrails.md": "ações proibidas e que exigem aprovação informadas",
+    "SOURCE/04-qualidade/definicao-de-pronto.md": "métrica de sucesso e quem aprova"
+  },
+  "limite_linhas_contexto_master": {
+    "SIMPLES": 40,
+    "MEDIO": 80,
+    "COMPLEXO": 120
+  },
+  "ignorar_placeholders": [
+    "SOURCE/05-referencias/templates",
+    "SOURCE/08-referencias/templates",
+    "SOURCE/06-decisoes/ADR-000",
+    "SOURCE/09-decisoes/ADR-000"
+  ],
+  "roteamento": {
+    "Automação, agente de IA, cowork/documentos ou ferramenta interna": "ai-project-template",
+    "Produto SaaS (clientes assinam e usam pela web/app)": "ai-saas-template",
+    "Jogo (jam, protótipo ou lançamento)": "ai-game-template"
+  }
+}

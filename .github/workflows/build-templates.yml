@@ -1,0 +1,16 @@
+name: build-templates
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python build.py
+      - name: Checar pacotes
+        run: |
+          for t in dist/*/; do python "$t/tools/startup.py" checar || exit 1; done

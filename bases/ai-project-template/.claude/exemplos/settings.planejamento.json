@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(/MODO.md)",
+      "Edit(/AGENTS.md)",
+      "Edit(/CLAUDE.md)",
+      "Edit(/niveis.json)",
+      "Edit(/tools/**)"
+    ]
+  }
+}

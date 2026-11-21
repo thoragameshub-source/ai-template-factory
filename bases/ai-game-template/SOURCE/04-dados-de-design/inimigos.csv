@@ -1,0 +1,4 @@
+id,nome,vida,dano_contato,velocidade,fraqueza,drop_fragmentos
+sombra_basica,Sombra Básica,40,8,2.0,luz,2
+vulto_veloz,Vulto Veloz,25,12,4.5,luz,3
+guardiao_fosso,Guardião do Fosso,300,20,1.2,luz,25
